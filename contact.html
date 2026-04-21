@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ - 格言庫（KakugenKo）</title>
+  <meta name="description" content="格言庫（KakugenKo）のお問い合わせフォーム">
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --text: #2B2620;
+      --sub: #7A6F5F;
+      --border: #E5DFD3;
+      --accent: #8A6B3B;
+      --danger: #B5503E;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 15px;
+      line-height: 1.8;
+      -webkit-text-size-adjust: 100%;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    h1 {
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin: 0 0 8px;
+      font-weight: 400;
+    }
+    .sub {
+      color: var(--sub);
+      font-size: 13px;
+      margin-bottom: 32px;
+    }
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .back:hover { color: var(--accent); }
+    form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--sub);
+      margin: 18px 0 6px;
+      font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.5px;
+    }
+    label:first-of-type { margin-top: 0; }
+    .req { color: var(--danger); margin-left: 4px; }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.7;
+    }
+    .hidden { display: none !important; }
+    button {
+      margin-top: 24px;
+      width: 100%;
+      padding: 14px 20px;
+      background: var(--accent);
+      color: #FFF;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: "Noto Sans JP", sans-serif;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    button:hover { opacity: 0.88; }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+    .result.success {
+      display: block;
+      background: #EAE0CC;
+      color: #5A4A2B;
+      border: 1px solid #D4C4A0;
+    }
+    .result.error {
+      display: block;
+      background: #F5DCD6;
+      color: #7A3A2A;
+      border: 1px solid #E5B5AA;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0D0D0D;
+        --surface: #1A1612;
+        --text: #E8E0D0;
+        --sub: #8A7F6F;
+        --border: #2A231B;
+        --accent: #C49B5B;
+      }
+      .result.success {
+        background: #2A2312;
+        color: #D4C08A;
+        border-color: #4A3A1E;
+      }
+      .result.error {
+        background: #3A1E18;
+        color: #E8B5A8;
+        border-color: #6A2E24;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="./" class="back">← トップへ戻る</a>
+    <h1>お問い合わせ</h1>
+    <p class="sub">格言庫（KakugenKo）に関するご質問・ご要望・不具合報告はこちらから。</p>
+
+    <form id="contactForm">
+      <!-- TODO: Web3Forms で新規 Access Key を取得して以下に置き換える -->
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="from_name" value="格言庫 お問い合わせ">
+      <input type="hidden" name="subject" value="【格言庫】お問い合わせ">
+
+      <!-- Honeypot (スパム対策) -->
+      <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
+
+      <label for="name">お名前（任意）</label>
+      <input type="text" id="name" name="name" autocomplete="name">
+
+      <label for="email">メールアドレス<span class="req">*</span></label>
+      <input type="email" id="email" name="email" required autocomplete="email">
+
+      <label for="type">お問い合わせの種類</label>
+      <select id="type" name="type">
+        <option value="バグ報告">バグ報告</option>
+        <option value="機能要望">機能要望</option>
+        <option value="プライバシーポリシーについて">プライバシーポリシーについて</option>
+        <option value="その他" selected>その他</option>
+      </select>
+
+      <label for="version">アプリのバージョン（任意）</label>
+      <input type="text" id="version" name="version" placeholder="例: 1.0.0">
+
+      <label for="message">内容<span class="req">*</span></label>
+      <textarea id="message" name="message" required placeholder="できるだけ具体的にお書きください"></textarea>
+
+      <button type="submit" id="submitBtn">送信する</button>
+
+      <div id="result" class="result"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = '送信中…';
+      result.className = 'result';
+      result.textContent = '';
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+        });
+        const json = await response.json();
+        if (response.status === 200) {
+          result.className = 'result success';
+          result.textContent = 'お問い合わせを送信しました。ご連絡ありがとうございます。';
+          form.reset();
+        } else {
+          result.className = 'result error';
+          result.textContent = json.message || '送信に失敗しました。時間をおいて再度お試しください。';
+        }
+      } catch (err) {
+        result.className = 'result error';
+        result.textContent = '通信エラーが発生しました。時間をおいて再度お試しください。';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '送信する';
+      }
+    });
+  </script>
+</body>
+</html>
