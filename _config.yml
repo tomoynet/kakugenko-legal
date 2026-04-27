@@ -1,0 +1,8 @@
+title: Tomoyuki Kimura - Legal
+baseurl: "/apps-legal"
+url: "https://tomoynet.github.io"
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude:
+  - README.md

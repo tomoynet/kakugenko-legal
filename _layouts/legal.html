@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'ja' }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }}</title>
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+<header>
+  <nav class="container" style="padding-top:16px;padding-bottom:16px;">
+    <a href="{{ page.back_url | default: '../' }}">{{ page.back_label | default: '← 戻る' }}</a>
+  </nav>
+</header>
+<main>
+  <div class="container">
+    <h1>{{ page.doc_title }}</h1>
+    <p class="subtitle">{{ page.app_name }}</p>
+
+    {{ content }}
+
+    {% if page.updated %}
+    <p class="updated">{{ page.updated }}</p>
+    {% endif %}
+  </div>
+</main>
+<footer>
+  {% if page.lang_alt_url %}
+  <a href="{{ page.lang_alt_url }}">{{ page.lang_alt_label }}</a>
+  {% endif %}
+  <p class="copyright">© 2026 Tomoyuki Kimura</p>
+</footer>
+</body>
+</html>
