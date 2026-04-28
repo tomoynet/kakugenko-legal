@@ -18,7 +18,7 @@ apps-legal/
 │   └── style.css            ← 共通スタイルシート
 ├── index.html               ← ルート（navigator.language で ja/en に自動リダイレクト）
 ├── ja/
-│   ├── index.html           ← 開発者ポータル（全アプリ一覧）
+│   ├── index.html           ← 規約・ポリシーポータル（全アプリ一覧）
 │   └── kakugenko/
 │       ├── index.html          ← 格言庫ハブ（文書一覧）
 │       ├── terms.md            ← 利用規約（Jekyll がHTML化）
@@ -35,7 +35,7 @@ apps-legal/
 
 **ページ階層:**
 ```
-ルート → 開発者ポータル（アプリ一覧）→ アプリハブ（文書一覧）→ 各文書
+ルート → 規約・ポリシーポータル（アプリ一覧）→ アプリハブ（文書一覧）→ 各文書
 ```
 
 ## アプリからのリンク先
@@ -48,7 +48,7 @@ apps-legal/
 | プライバシーポリシー | `https://tomoynet.github.io/apps-legal/ja/kakugenko/privacy-policy` |
 | お問い合わせ | `https://tomoynet.github.io/apps-legal/ja/kakugenko/contact.html` |
 | アプリハブ | `https://tomoynet.github.io/apps-legal/ja/kakugenko/` |
-| 開発者ポータル | `https://tomoynet.github.io/apps-legal/ja/` |
+| 規約・ポリシーポータル | `https://tomoynet.github.io/apps-legal/ja/` |
 
 ## お問い合わせフォームの設定
 
@@ -81,7 +81,7 @@ ja/新アプリ名/
 └── contact.html
 ```
 
-2. `ja/index.html` と `en/index.html`（開発者ポータル）にアプリのカードを追記する
+2. `ja/index.html` と `en/index.html`（規約・ポリシーポータル）にアプリのカードを追記する
 
 ### 各ファイルで書き換える箇所（チェックリスト）
 
@@ -106,7 +106,7 @@ ja/新アプリ名/
 - `<input name="subject">` の value（例: `【新アプリ名】お問い合わせ`）
 - `<input name="access_key">` は **kakugenko と同じ値のままで OK**（共通キー）
 
-**ルートの `ja/index.html` / `en/index.html`（開発者ポータル）**
+**ルートの `ja/index.html` / `en/index.html`（規約・ポリシーポータル）**
 - `<ul class="doc-list">` 内に新しい `<li>` カードを追記
 - `href="./新アプリ名/"` とアプリ名・説明文
 
