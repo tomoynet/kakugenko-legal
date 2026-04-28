@@ -67,6 +67,10 @@ Access Key は [Web3Forms](https://web3forms.com/) で取得する。
 
 ## 新しいアプリを追加するとき
 
+`kakugenko/` を雛形にしてコピーし、各ファイルでアプリ名・URL を置換する運用。Web3Forms の `access_key` は全アプリ共通で使い回す（Web3Forms 管理画面では `subject` で振り分けて確認する）。
+
+### 手順
+
 1. `ja/新アプリ名/` と `en/新アプリ名/` を作成し、以下を配置する
 
 ```
@@ -78,6 +82,33 @@ ja/新アプリ名/
 ```
 
 2. `ja/index.html` と `en/index.html`（開発者ポータル）にアプリのカードを追記する
+
+### 各ファイルで書き換える箇所（チェックリスト）
+
+新アプリを追加するときに漏れやすい項目。kakugenko を雛形にコピーした後、以下をすべて更新する。
+
+**`<app>/index.html`（アプリハブ）**
+- `<title>` のアプリ名
+- `<h1>` のアプリ名
+- `<p class="subtitle">` のアプリ名
+
+**`<app>/terms.md` / `<app>/privacy-policy.md`（フロントマター）**
+- `title` のアプリ名（例: `利用規約 - 新アプリ名`）
+- `app_name`
+- `back_label`（例: `← 新アプリ名`）
+- `lang_alt_url`（ja↔en の対応パス。コピペミスで 404 を踏みやすいので注意）
+- `updated`（制定日・最終更新日）
+
+**`<app>/contact.html`**
+- `<title>` / `<h1>` / `<p class="subtitle">` のアプリ名
+- back link の `← アプリ名`
+- `<input name="from_name">` の value（例: `新アプリ名 お問い合わせ`）
+- `<input name="subject">` の value（例: `【新アプリ名】お問い合わせ`）
+- `<input name="access_key">` は **kakugenko と同じ値のままで OK**（共通キー）
+
+**ルートの `ja/index.html` / `en/index.html`（開発者ポータル）**
+- `<ul class="doc-list">` 内に新しい `<li>` カードを追記
+- `href="./新アプリ名/"` とアプリ名・説明文
 
 ## 開発者
 
